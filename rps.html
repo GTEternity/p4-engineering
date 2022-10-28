@@ -10,6 +10,8 @@
         </center>
         <script>
         var round = 1;
+        var cpu_wins = 0;
+        var plr_wins = 0;
         const options = document.querySelectorAll(".options");
         options.forEach((option) => {
             option.addEventListener("click", function () {
@@ -32,31 +34,41 @@
             else if (pInput === "Rock") {
                 if (cInput === "Scissors") {
                     currentMatch += "player wins";
+                    plr_wins++;
                 } else {
                     currentMatch += "computer wins";
+                    cpu_wins++;
                 }
             }
             // Paper
             else if (pInput === "Paper") {
                 if (cInput === "Rock") {
                     currentMatch += "player wins";
+                    plr_wins++;
                 } else {
                     currentMatch += "computer wins";
+                    cpu_wins++;
                 }
             }
             // Scissors
             else {
                 if (cInput === "Paper") {
-                    currentMatch += "player wins";;
+                    currentMatch += "player wins";
+                    plr_wins++;
                 } else {
                     currentMatch += "computer wins";
+                    cpu_wins++;
                 }
             }
+            var point_count = document.getElementById("points");
+            var point_tally = "Player: " + plr_wins + ", Computer: " + cpu_wins;
             result.innerHTML = currentMatch;
+            point_count.innerHTML = point_tally;
             round++;
         }
         </script>
         <center><div id="hideaway"></div></center>
+        <center><div id="points"></div></center>
         <br><br><br><br><br><br><br><br>
         <a href = "index.html">
             <button>
